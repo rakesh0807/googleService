@@ -13,9 +13,14 @@ app.get('/', (req, res) => {
   res.status(200).send('Hello, world!').end();
 });
 
-
 app.post('/', (req, res) => { //read data from req body
-    console.log(req.body.user.name)
+    console.log(req.body);
+  //  get the action and entities 
+  let action = req.body.result.action;
+  let intentName =  req.body.metadata.intentName;
+  let resolveQuery = req.body.resolveQuery;
+  
+    
   });
   
 // Start the server

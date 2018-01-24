@@ -1,5 +1,5 @@
 {
-  "name": "appengine-hello-world",
+  "name": "appengineGoogleService",
   "description": "Google service app",
   "version": "0.0.1",
   "private": true,
