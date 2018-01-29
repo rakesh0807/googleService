@@ -2,6 +2,8 @@ const express = require('express');
 var bodyParser = require('body-parser');
 var proceseRequest = require("./reqProcessing/preparePost");
 const app = express();
+// Application development
+//https://medium.com/google-cloud/how-to-create-a-custom-private-google-home-action-260e2c512fc 
 
 app.use(bodyParser.urlencoded({
     extended: true
