@@ -33,11 +33,10 @@ app.post('/', (req, res) => { //read data from req body
         console.log("\ninside if"+JSON.stringify(resp.d));
         resp.speech = resp.d.speech;
         resp.displayText = resp.d.displayText;
-
       }else{
         console.log("\ninside else");
-        googleResp.speech = "Something went wrong ,Please try again";
-        googleResp.displayText = "Something went wrong ,Please try again";
+        resp.speech = "Something went wrong ,Please try again";
+        resp.displayText = "Something went wrong ,Please try again";
       }
      res.json(resp);
     }
