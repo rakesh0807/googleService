@@ -17,22 +17,18 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => { //read data from req body
   let reqBody = req.body;
-  console.log("Request body is " + JSON.stringify(req.body));
+  console.log("Original Request body is " + JSON.stringify(req.body));
   if (reqBody.result) {
-  if (reqBody.result && reqBody.result.contexts) {
-    delete reqBody.result.contexts;
-  }
-  if (reqBody.result.fulfillment && reqBody.result.fulfillment.messages) {
-    delete reqBody.result.fulfillment.messages;
-  };
-  if (reqBody.result.parameters) {
-    delete reqBody.result.parameters;
-  };
+    if (reqBody.result && reqBody.result.contexts) {
+      delete reqBody.result.contexts;
+    }
+    if (reqBody.result.fulfillment && reqBody.result.fulfillment.messages) {
+      delete reqBody.result.fulfillment.messages;
+    };
+    if (reqBody.result.parameters) {
+      delete reqBody.result.parameters;
+    };
 
-    // let action = reqBody.result.action;
-    // let intentName = reqBody.result.metadata.intentName;
-    // let resolveQuery = reqBody.result.resolveQuery;
-    //console.log(reqBody);
     proceseRequest(reqBody).then(
       function (resp) {
         if (resp.d) {
