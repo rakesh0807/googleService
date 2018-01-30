@@ -1,8 +1,8 @@
 const request = require("request");
 const http = require("http");
 
-let url = "http://ln04ca.homedepot1.com:8002/sap/opu/odata/sap/ZCAM_GTEST_SRV/WebHookReqSet?sap-client=500"
-let fetchurl = "http://ln04ca.homedepot1.com:8002/sap/opu/odata/sap/ZCAM_GTEST_SRV/$metadata?sap-client=500"
+let url = "http://ln04ca.homedepot.com:8002/sap/opu/odata/sap/ZCAM_GTEST_SRV/WebHookReqSet?sap-client=500"
+let fetchurl = "http://ln04ca.homedepot.com:8002/sap/opu/odata/sap/ZCAM_GTEST_SRV/$metadata?sap-client=500"
 
 var getDataFromBackcend = function (data) {
   return new Promise(function (resolve, reject) {
@@ -48,7 +48,7 @@ var getDataFromBackcend = function (data) {
             //console.log("Reponse is :"+JSON.stringify(response));
           }
           if (body) {
-            console.log("Body after executing SAP Call :" + error);
+            console.log("Body after executing SAP Call :" + JSON.stringify(body));
             resolve(body);
           }
         });

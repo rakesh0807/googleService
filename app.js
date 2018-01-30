@@ -32,11 +32,11 @@ app.post('/', (req, res) => { //read data from req body
     proceseRequest(reqBody).then(
       function (resp) {
         if (resp.d) {
-          console.log("\ninside if" + JSON.stringify(resp.d));
+          console.log("\n Resp in app" + JSON.stringify(resp.d));
           resp.speech = resp.d.speech;
           resp.displayText = resp.d.displayText;
         } else {
-          console.log("\ninside else");
+          console.log("\n Resp in App else ");
           resp.speech = "Something went wrong ,Please try again";
           resp.displayText = "Something went wrong ,Please try again";
         }
