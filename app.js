@@ -44,6 +44,9 @@ app.post('/', (req, res) => { //read data from req body
       }
     ).catch(
       function (error) {
+        var data = {};
+        error.speech = "There is an error occured while getting values";
+        error.displayText = "There is an error occured while getting values";
         res.status(500).send(error).end();
       }
       );
