@@ -29,9 +29,9 @@ app.post('/', (req, res) => { //read data from req body
     delete reqBody.result.parameters;
   };
 
-    let action = reqBody.result.action;
-    let intentName = reqBody.result.metadata.intentName;
-    let resolveQuery = reqBody.result.resolveQuery;
+    // let action = reqBody.result.action;
+    // let intentName = reqBody.result.metadata.intentName;
+    // let resolveQuery = reqBody.result.resolveQuery;
     //console.log(reqBody);
     proceseRequest(reqBody).then(
       function (resp) {
