@@ -5,6 +5,7 @@ let url = "http://ln04ca.homedepot.com:8002/sap/opu/odata/sap/ZCAM_GTEST_SRV/Web
 let fetchurl = "http://ln04ca.homedepot.com:8002/sap/opu/odata/sap/ZCAM_GTEST_SRV/$metadata?sap-client=500"
 
 var getDataFromBackcend = function (data) {
+  console.log("\nProcessed Request to SAP "+JSON.stringify(data));
   return new Promise(function (resolve, reject) {
     var cookieJar = request.jar();
     request.get({

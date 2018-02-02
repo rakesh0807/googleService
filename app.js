@@ -12,11 +12,11 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json()); // convert to Json
 
 app.get('/', (req, res) => {
-  res.status(200).send('Hello, world!').end();
+  res.status(200).send('Welcome to the agent').end();
 });
 
 app.post('/', (req, res) => { //read data from req body
-  let reqBody = req.body;
+  let reqBody = Object.assign({}, req.body);
   console.log("Original Request body is " + JSON.stringify(req.body));
   if (reqBody.originalRequest) {
     delete reqBody.originalRequest;
@@ -34,7 +34,7 @@ app.post('/', (req, res) => { //read data from req body
     if (reqBody.result.metadata && reqBody.result.metadata.matchedParameters) {
       delete reqBody.result.metadata.matchedParameters;
     };
-    
+
 
     proceseRequest(reqBody).then(
       function (resp) {
@@ -43,7 +43,6 @@ app.post('/', (req, res) => { //read data from req body
           resp.speech = resp.d.speech;
           resp.displayText = resp.d.displayText;
         } else {
-          console.log("\n Resp in App else ");
           resp.speech = "Something went wrong ,Please try again";
           resp.displayText = "Something went wrong ,Please try again";
         }
@@ -51,7 +50,6 @@ app.post('/', (req, res) => { //read data from req body
       }
     ).catch(
       function (error) {
-        var data = {};
         error.speech = "There is an error occured while getting values";
         error.displayText = "There is an error occured while getting values";
         res.status(500).send(error).end();
