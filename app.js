@@ -18,6 +18,9 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => { //read data from req body
   let reqBody = req.body;
   console.log("Original Request body is " + JSON.stringify(req.body));
+  if (reqBody.originalRequest) {
+    delete reqBody.originalRequest;
+  }
   if (reqBody.result) {
     if (reqBody.result && reqBody.result.contexts) {
       delete reqBody.result.contexts;
@@ -28,6 +31,10 @@ app.post('/', (req, res) => { //read data from req body
     if (reqBody.result.parameters) {
       delete reqBody.result.parameters;
     };
+    if (reqBody.result.metadata && reqBody.result.metadata.matchedParameters) {
+      delete reqBody.result.metadata.matchedParameters;
+    };
+    
 
     proceseRequest(reqBody).then(
       function (resp) {
