@@ -1,6 +1,6 @@
 const request = require("request");
 const http = require("http");
-let API_TOKEN_URL = "https://thdapiqai.homedepot.com/minstance/auth/oauth/v2/token";
+let API_TOKEN_URL = "https://thdapiqae.homedepot.com/minstance/auth/oauth/v2/token";
 // let url = "http://ln04ca.homedepot.com:8002/sap/opu/odata/sap/ZCAM_GTEST_SRV/WebHookReqSet?sap-client=500"
 // let fetchurl = "http://ln04ca.homedepot.com:8002/sap/opu/odata/sap/ZCAM_GTEST_SRV/$metadata?sap-client=500"
 let url = "https://thdapiqae.homedepot.com/ad/sap/opu/odata/sap/ZCAM_GTEST_SRV/WebHookReqSet?sap-client=500"
@@ -40,8 +40,8 @@ var getDataFromBackcend = function (data) {
               {
                 url: csrfUrl,
                 //  auth: {
-                //   user: 'GXR8193',
-                //   password: 'Search@home1'
+                //   user: '',
+                //   password: ''
                 // },
                 // headers: {
                 //   "Authorization": "Basic USERANDPWINBASE64",
@@ -64,8 +64,8 @@ var getDataFromBackcend = function (data) {
                   request.post({
                     url: url,
                     // auth: {
-                    //   user: 'GXR8193',
-                    //   password: 'Search@home1'
+                    //   user: '',
+                    //   password: ''
                     // },
                     jar: cookieJar,
                     // headers: {

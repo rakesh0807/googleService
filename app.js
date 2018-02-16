@@ -47,7 +47,7 @@ app.post('/', (req, res) => { //read data from req body
           googleResp.speech = "Something went wrong ,Please try again";
           googleResp.displayText = "Something went wrong ,Please try again";
         }
-        res.json(googleResp);
+        res.json(googleResp).end();
       }
     ).catch(
       function (error) {
