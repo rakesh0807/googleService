@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => { //read data from req body
   let reqBody = Object.assign({}, req.body);
-  console.log("Original Request body is " + JSON.stringify(req.body));
+  //console.log("Original Request body is " + JSON.stringify(req.body));
   if (reqBody.originalRequest) {
     delete reqBody.originalRequest;
   }
@@ -38,18 +38,20 @@ app.post('/', (req, res) => { //read data from req body
 
     proceseRequest(reqBody).then(
       function (resp) {
+        console.log("\n Resp in app" + JSON.stringify(resp.d));
+        let googleResp = {};
         if (resp.d) {
-          console.log("\n Resp in app" + JSON.stringify(resp.d));
-          resp.speech = resp.d.speech;
-          resp.displayText = resp.d.displayText;
+          googleResp.speech = resp.d.speech;
+          googleResp.displayText = resp.d.displayText;
         } else {
-          resp.speech = "Something went wrong ,Please try again";
-          resp.displayText = "Something went wrong ,Please try again";
+          googleResp.speech = "Something went wrong ,Please try again";
+          googleResp.displayText = "Something went wrong ,Please try again";
         }
-        res.json(resp);
+        res.json(googleResp);
       }
     ).catch(
       function (error) {
+        console.log("\n Error  in app" + error);
         error.speech = "There is an error occured while getting values";
         error.displayText = "There is an error occured while getting values";
         res.status(500).send(error).end();
