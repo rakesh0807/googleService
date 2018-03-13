@@ -18,25 +18,37 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => { //read data from req body
   let reqBody = Object.assign({}, req.body);
   //console.log("Original Request body is " + JSON.stringify(req.body));
+
+  let sapbodyData = {};
   if (reqBody.originalRequest) {
     delete reqBody.originalRequest;
   }
   if (reqBody.result) {
-    if (reqBody.result && reqBody.result.contexts) {
-      delete reqBody.result.contexts;
+    // if (reqBody.result && reqBody.result.contexts) {
+    //   delete reqBody.result.contexts;
+    // }
+    // if (reqBody.result.fulfillment && reqBody.result.fulfillment.messages) {
+    //   delete reqBody.result.fulfillment.messages;
+    // };
+    // if (reqBody.result.parameters) {
+    //   delete reqBody.result.parameters;
+    // };
+    // if (reqBody.result.metadata && reqBody.result.metadata.matchedParameters) {
+    //   delete reqBody.result.metadata.matchedParameters;
+    // };
+    sapbodyData.id = reqBody.id;
+    sapbodyData.timestamp =reqBody.timestamp;
+
+    if(reqBody.result.resolvedQuery){
+      sapbodyData.resolvedQuery = reqBody.result.resolvedQuery
     }
-    if (reqBody.result.fulfillment && reqBody.result.fulfillment.messages) {
-      delete reqBody.result.fulfillment.messages;
-    };
-    if (reqBody.result.parameters) {
-      delete reqBody.result.parameters;
-    };
-    if (reqBody.result.metadata && reqBody.result.metadata.matchedParameters) {
-      delete reqBody.result.metadata.matchedParameters;
-    };
+    if(reqBody.result.action){
+      sapbodyData.action = reqBody.result.action
+    }
 
 
-    proceseRequest(reqBody).then(
+
+    proceseRequest(sapbodyData).then(
       function (resp) {
         console.log("\n Resp in app" + JSON.stringify(resp.d));
         let googleResp = {};

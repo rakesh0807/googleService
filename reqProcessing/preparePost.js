@@ -3,8 +3,8 @@ const http = require("http");
 let API_TOKEN_URL = "https://thdapiqae.homedepot.com/minstance/auth/oauth/v2/token";
 // let url = "http://ln04ca.homedepot.com:8002/sap/opu/odata/sap/ZCAM_GTEST_SRV/WebHookReqSet?sap-client=500"
 // let fetchurl = "http://ln04ca.homedepot.com:8002/sap/opu/odata/sap/ZCAM_GTEST_SRV/$metadata?sap-client=500"
-let url = "https://thdapiqae.homedepot.com/ad/sap/opu/odata/sap/ZCAM_GTEST_SRV/WebHookReqSet?sap-client=500"
-let csrfUrl = "https://thdapiqae.homedepot.com/ad/sap/opu/odata/sap/ZCAM_GTEST_SRV/$metadata?sap-client=500"
+let url = "https://thdapiqae.homedepot.com/ad/sap/opu/odata/sap/ZCAM_COACH_SRV/CAMDetailsSet?sap-client=500"
+let csrfUrl = "https://thdapiqae.homedepot.com/ad/sap/opu/odata/sap/ZCAM_COACH_SRV/$metadata?sap-client=500"
 
 // Main method that is exported 
 var getDataFromBackcend = function (data) {
